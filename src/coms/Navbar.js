@@ -1,0 +1,27 @@
+import React, { useEffect } from 'react'
+import '../App.css'
+import {Link} from 'react-router-dom'
+export const Navbar = () => {
+    function hideBar (element_1,element_2){
+        if(element_1){
+            element_1.classList.toggle('hide_')
+            element_2.classList.toggle('rotate_')
+        }
+    }
+    useEffect(()=>{
+        var N_ul_D = document.querySelector('.N_ul')
+        var N_i_D = document.querySelector('.N_i')
+        N_i_D.addEventListener('click',()=>hideBar(N_ul_D,N_i_D))
+    },[])
+  return (
+    <div className='N_'>
+        <ul className='N_ul'>
+            <a href='/home' className='N_li'>Home</a>
+            <a href='/about' className='N_li'>About</a>
+            <a href='/contact'className='N_li'>Contact</a>
+        </ul>
+        <span className='N_i-con'><img className='N_i' src={require('../icons/N_icon.png')}/></span>
+
+    </div>
+  )
+}
