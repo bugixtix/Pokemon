@@ -4,6 +4,25 @@
   --color_03:#378BA4;
   --color_04:#81BECE;
   --color_05:#E8EDE7;
+  --color_06:#680003;
+  --color_07:#BC0000;
+  --color_08:#F5704A;
+  --color_09:#EFB9AD;
+  --color_10:#828D00;
+  --color_11:#1D0F0F;
+  --color_12:#453C41;
+  --color_13:#7B7C81;
+  --color_14:#D4DBE2;
+  --color_15:#7B586B;
+  --color_16:#F6F2F6;
+  --color_17:#E1D5D9;
+  --color_18:#B7A7AE;
+  --color_19:#58545B;
+  --color_20:#1C252C;
+  --color_21:#1C252CAA;
+  --color_22:#1C252C99;
+  --color_23:#010108;
+  
   --displayFlexNone:flex;
 }
 
@@ -43,10 +62,6 @@
   animation: underline_ 500ms ease;
   animation-fill-mode: forwards;
 }
-@keyframes underline_ {
-  0%{text-decoration: none;}
-  100%{text-decoration: underline;text-decoration-color: var(--color_04); text-decoration-thickness: 1px; text-decoration-skip-ink:all; }
-}
 .N_i-con{
   display: flex; justify-content: center; align-items: center;
   position: absolute;
@@ -67,6 +82,83 @@
   animation: rotate__ ease 600ms ;
   animation-fill-mode: forwards ;
 }
+
+
+/*  */
+
+
+.M_{
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 100vw; height: 80vh;
+}
+.M_bg{
+  background-image:url('./images/Pokémon_bg.png'),linear-gradient(90deg, var(--color_21) 25%, var(--color_22) 75%); background-size: cover ; background-blend-mode: saturation;
+  width: 100%; height: 100%; position: relative;
+}
+.M_ct{
+  display: flex; flex-direction:column; align-items: center; justify-content:center; 
+  width: 100%; height: 100%;
+}
+.M_h1{
+  color: var(--color_16) ; font-size: 70px ; text-shadow: var(--color_07) 2px 2px 0 ; letter-spacing: 3px ; text-align: center ;
+  animation:show__ ease 1s ;
+  width: 80%;
+}
+.M_h3{
+  color: var(--color_08) ; font-size: 50px ; text-shadow: var(--color_23) 3px 3px 0 ; letter-spacing: 2px ; text-align: center ; line-height: 1em;
+  width: 60% ;
+  margin-top: 20px ;
+  transition: all ease 1s;
+  animation:show__ ease 1s;
+}
+
+
+/* */
+
+.SB_{
+  width: 100vw; height: 50px; margin: 20px 0px;
+  display: flex ; flex-wrap: wrap ; justify-content: center ; align-items: center ;
+}
+.SB_in{
+  width: 45%; height: 100%; padding: 4px 8px 0px 8px;
+  outline: none ; border: 2px solid var(--color_03) ;  border-top-left-radius: 4px ; border-bottom-left-radius: 4px ; border-style: outset ;
+  font-size: 34px ; color: var(--color_01) ; text-shadow: var(--color_09) 1px 1px 0;
+}
+.SB_btn{
+  height: 100% ; padding: 8px ; margin-left:-4px;
+  outline: none ; border: 2px outset var(--color_03) ; border-top-right-radius: 4px ; border-bottom-right-radius: 4px ;
+  display: flex ; align-items: center ;
+  background: var(--color_03) ;
+  cursor: pointer ;
+  transition : background,transform 1s ease ;
+}
+.SB_in:focus + .SB_btn {
+  border : 2px outset var(--color_08) ;
+  border-left: none ;
+  background: var(--color_08) ;
+}.SB_in:focus{border: 2px outset var(--color_08) ; border-right: none ;}
+.SB_btn:focus{background: var(--color_10) ; border: 2px outset var(--color_10) ;transform: scale(0.93) ;}
+.SB_i{
+  font-size: 36px ; color: #fff ; 
+  padding: 4px 0px 0px 0px ;
+}
+.SB_btn:focus > .SB_i{
+  animation: translate_ ease 1s ;
+}
+
+/*  */
+
+@keyframes translate_ {
+  0%{transform: translate(0px, 0px);}
+  20%{transform: translate(0px, -4px);}
+  40%{transform: translate(-4px, -4px);}
+  60%{transform: translate(-4px, 4px);}
+  100%{transform: translate(0px, 0px);}
+}
+@keyframes underline_ {
+  0%{text-decoration: none;}
+  100%{text-decoration: underline;text-decoration-color: var(--color_04); text-decoration-thickness: 1px; text-decoration-skip-ink:all; }
+}
 @keyframes rotate__ {
   0%{transform: rotate(0deg);}
   100%{transform: rotate(360deg);}
@@ -77,11 +169,26 @@
 }
 @keyframes show__ {
   0%{visibility: hidden; opacity: 0; transform: scale(0);}
-  100%{visibility: visible; opacity: 1; transform: scale(1);}
+  100%{visibility: visible; opacity: 1; transform: scale(1x);}
+}
+::placeholder{
+  color: #036280;
+  opacity: 0.65;
 }
 @media screen and (max-width:768px) {
   .N_{flex-direction: column;}
   .N_ul{flex-direction: column; flex-wrap: nowrap; margin-left: 20px; top: 100px; position: relative; width: 100%; height: auto; margin: 0;}
   .N_i-con{width: 100%; height: 100%; position: inherit; left: auto;}
   .N_li{padding:8px; width: 100%; justify-content: center;}
+
+  /* 
+   */
+
+   .M_h1{font-size: 38px;}
+   .M_h3{font-size: 28px;}
+
+   /* 
+    */
+
+    .SB_in{font-size: 24px;}
 }

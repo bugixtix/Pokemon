@@ -12,6 +12,8 @@ export const Navbar = () => {
         var N_ul_D = document.querySelector('.N_ul')
         var N_i_D = document.querySelector('.N_i')
         N_i_D.addEventListener('click',()=>hideBar(N_ul_D,N_i_D))
+        if(window.innerWidth <= 768){N_ul_D.classList.add('hide_')}
+        window.addEventListener('resize',()=>{if(window.innerWidth <= 768){N_ul_D.classList.add('hide_')}})
     },[])
   return (
     <div className='N_'>
