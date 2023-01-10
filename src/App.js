@@ -1,6 +1,6 @@
 import './App.css';
 import { Navbar } from './coms/Navbar';
-import { Main } from './coms/Main';
+// import { Main } from './coms/Main';
 import { Content } from './coms/Content';
 import { Footer } from './coms/Footer';
 import { SearchBar } from './coms/SearchBar';
