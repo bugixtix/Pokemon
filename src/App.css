@@ -58,7 +58,7 @@
   text-decoration: none;
   transition: background-color 500ms ease-in;
 }.N_li:hover{
-  background-color: var(--color_01);
+  /* color: var(--color_06); */
   animation: underline_ 500ms ease;
   animation-fill-mode: forwards;
 }
@@ -156,8 +156,8 @@
   100%{transform: translate(0px, 0px);}
 }
 @keyframes underline_ {
-  0%{text-decoration: none;}
-  100%{text-decoration: underline;text-decoration-color: var(--color_04); text-decoration-thickness: 1px; text-decoration-skip-ink:all; }
+  0%{text-decoration: none; color: var(--color_09);}
+  100%{text-decoration: underline;text-decoration-color: var(--color_04); text-decoration-thickness: 1px; color: var(--color_08); }
 }
 @keyframes rotate__ {
   0%{transform: rotate(0deg);}
@@ -176,26 +176,6 @@
   opacity: 0.65;
 }
 
-.M_{
-  display: flex; flex-direction: column; align-items: center; justify-content: center; 
-  position: relative; top: 90px;
-  width: 100vw; height: 80vh;
-}
-.M_bg{
-  width: inherit; height: inherit; 
-  display: flex; flex-direction: column ; justify-content: center; align-items: center; 
-  background:url(./images/Pokemon_bg.png); background-position: center; background-repeat: no-repeat; background-size: cover; 
-}
-.M_ct{
-  width: 100%; height: 100%;
-  position: absolute; top: 90px;
-}
-.M_h1{
-  font-size: 50px; color: var(--color_05); text-shadow: var(--color_01) 1px 1px 0 ; letter-spacing: 2.5px; text-align: center; padding: 12px 0px;
-}
-.M_h3{
-  font-size: 32px; color: var(--color_04); text-align: center; text-shadow: var(--color_01) 1px 1px 0; letter-spacing: 1.8px; padding: 12px 0px ;
-}
 @media screen and (max-width:768px) {
   .N_{flex-direction: column;}
   .N_ul{flex-direction: column; flex-wrap: nowrap; margin-left: 20px; top: 100px; position: relative; width: 100%; height: auto; margin: 0;}
