@@ -1,0 +1,83 @@
+*{
+    box-sizing: border-box;
+    margin: 0 ; padding: 0 ;
+}
+
+.Card_{
+    width: 390px;
+    border: 18px solid red ; border-radius: 16px ;
+    display: flex ; flex-direction: column ; justify-content: center ;
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%) ;
+}
+
+.Card_head{
+    display: flex ; flex-direction: row ; justify-content: space-between ; padding: 0px 18px;
+}
+.head_con{
+    display: flex ; flex-direction: column ; 
+    /* height: 40px; */
+}
+.head__type{
+    font-size: 12px ; font-weight: 600 ; line-height: 2px ; padding-top: 12px ;
+}
+.head__name{
+    font-weight: 700 ;
+}
+.head_HP{
+    display: flex ; justify-content: center ; align-items: flex-end;
+    color: red;
+}
+
+.Card_img-con{
+    margin: 0px 18px ; height: 220px ; 
+    background-color: red ; 
+    border-radius: 4px;
+    display: flex ; align-items: flex-start ;
+
+}
+.Card__image{
+    width: 100% ; height: 100% ; padding: 0px ; margin: auto ; 
+    object-fit: cover ;
+    border: 7px solid red ; border-radius: 2px ; border-style: outset ;
+    box-shadow: 5px 5px 8px 0px rgba(0,0,0,0.75);
+}
+
+.Card_physical{
+    font-size: 14px ; 
+    text-align: center ;
+    padding: 4px 2px 1px 2px ; 
+    background-color: red ;
+    display: flex ; flex-direction: row ; align-items: center ; justify-content: center ; margin: 6px 22px 0px 22px ;
+}
+
+.Card_ability-1{
+    display: flex ; flex-direction: row ; justify-content: space-between ;
+    padding: 0px 9px ; width: 100% ; margin: 12px 0px 8px 0px ;
+}
+.ability-1_icons{
+    display: flex ; flex-direction: row ; justify-content: center ; align-items: center ;
+}
+.icons_eye{
+    background-color: #fff ; padding: 2px 3px ; border-radius: 100% ; display: flex ; align-items: center ;
+}
+.icons_star{
+    background-color: #fff ; padding: 2px 2px ; border-radius: 100% ; display: flex ; align-items: center ; margin: 0px 8px 0px 6px ;
+}
+.ability-1__type{
+    font-size: 18px ; font-weight: 700 ; 
+}
+.ability-1__description{
+    font-size: 12px ; font-weight: 500 ; max-width: 80%;
+}
+.ability-1_in-number{
+    display: flex ; flex-direction: row ; justify-content: center ; align-items: center ;
+}
+.icons_one{
+    font-size: 32px ; margin-right: -18px ; padding: 0px ;
+}
+.icons_zero{
+    font-size: 32px ; margin-right: -8px ;
+}
+.icons_plus{
+    font-size: 32px ; font-weight: 600 ; margin-right: 5px ;
+}
