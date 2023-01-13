@@ -29,7 +29,9 @@
 *{
   box-sizing: border-box;
   margin: 0 ; padding: 0 ;
+  outline: 1px solid #f00 !important;
 }
+
 
 .N_{
   width: 100vw;
@@ -148,6 +150,16 @@
 
 /*  */
 
+.C_{
+  display: flex ; flex-direction: column ; justify-content: center ;
+  width: 100vw ; padding: 0px 20px ; overflow: hidden ; 
+}
+.C_h1{
+  font-size: 42px ; text-decoration: underline ; margin: 0px 0px 20px 0px ;
+}
+.C_C{
+  display: flex ; flex-direction: row ; justify-content: center ; align-items: center ; width: 100% ;
+}
 @keyframes translate_ {
   0%{transform: translate(0px, 0px);}
   20%{transform: translate(0px, -4px);}

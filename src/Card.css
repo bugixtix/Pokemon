@@ -2,10 +2,45 @@
     box-sizing: border-box;
     margin: 0 ; padding: 0 ;
 }
+:root{
+    --color_00:#000000;
+    --color_01:#012E4A;
+    --color_02:#036280;
+    --color_03:#378BA4;
+    --color_04:#81BECE;
+    --color_05:#E8EDE7;
+    --color_06:#680003;
+    --color_07:#BC0000;
+    --color_08:#F5704A;
+    --color_09:#EFB9AD;
+    --color_10:#828D00;
+    --color_11:#1D0F0F;
+    --color_12:#453C41;
+    --color_13:#7B7C81;
+    --color_14:#D4DBE2;
+    --color_15:#7B586B;
+    --color_16:#F6F2F6;
+    --color_17:#E1D5D9;
+    --color_18:#B7A7AE;
+    --color_19:#58545B;
+    --color_20:#1C252C;
+    --color_21:#1C252CAA;
+    --color_22:#1C252C99;
+    --color_23:#010108;
+    --color_24:#d50404;
+    --color_25:#b18517;
+    --color_26:#DAA520;
+    --color_27:#f3b6f6;
+    --color_28:#6f0875;
+    --color_29:#eeeeee;
+    --color_30:#333333;
+    --color_31:#dddddd;
+    --color_32:#FFD700;
+      }
 
 .Card_{
     width: 390px;
-    border: 18px solid red ; border-radius: 16px ;
+    border: 18px outset var(--color_26) ; border-radius: 16px ;
     display: flex ; flex-direction: column ; justify-content: center ;
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%) ;
 }
@@ -25,12 +60,24 @@
 }
 .head_HP{
     display: flex ; justify-content: center ; align-items: flex-end;
-    color: red;
+    color: var(--color_24) ; text-shadow: var(--color_00) 1px 1px 2px ;
+}
+.HP_con{
+    display: flex ; flex-direction: row ; align-items: center ;
+}
+.HP_value{
+    margin: 0px 4px ;
+}
+.HP_icons{
+    background: radial-gradient(circle at 10px 8px, var(--color_27), var(--color_28)
+    ) ; color: var(--color_23);
+     padding: 2px 3px ; border-radius: 100% ; display: flex ; align-items: center ;
+     margin: 2px 0px;
 }
 
 .Card_img-con{
     margin: 0px 18px ; height: 220px ; 
-    background-color: red ; 
+    background-color: var(--color_26); 
     border-radius: 4px;
     display: flex ; align-items: flex-start ;
 
@@ -38,16 +85,16 @@
 .Card__image{
     width: 100% ; height: 100% ; padding: 0px ; margin: auto ; 
     object-fit: cover ;
-    border: 7px solid red ; border-radius: 2px ; border-style: outset ;
+    border: 7px solid var(--color_25) ; border-radius: 2px ; border-style: outset ;
     box-shadow: 5px 5px 8px 0px rgba(0,0,0,0.75);
 }
 
 .Card_physical{
-    font-size: 14px ; 
+    font-size: 12px ; font-weight: 700 ; font-style: italic;
     text-align: center ;
-    padding: 4px 2px 1px 2px ; 
-    background-color: red ;
-    display: flex ; flex-direction: row ; align-items: center ; justify-content: center ; margin: 6px 22px 0px 22px ;
+    padding: 4px 2px 1px 2px ; margin: 6px 40px 0px 40px ; 
+    background: linear-gradient(90deg, rgba(177,133,23,1) 0%, rgba(255,210,95,1) 50%, rgba(177,133,23,1) 100%);
+    display: flex ; flex-direction: row ; align-items: center ; justify-content: center ; 
 }
 
 .Card_ability-1{
@@ -58,16 +105,22 @@
     display: flex ; flex-direction: row ; justify-content: center ; align-items: center ;
 }
 .icons_eye{
-    background-color: #fff ; padding: 2px 3px ; border-radius: 100% ; display: flex ; align-items: center ;
+    /* background: linear-gradient(0deg, rgba(182,62,189,0.7) 56%, rgba(255,255,255,1) 100%); */
+    background: radial-gradient(circle at 10px 8px, var(--color_27), var(--color_28)
+    );
+     padding: 2px 3px ; border-radius: 100% ; display: flex ; align-items: center ;
 }
 .icons_star{
-    background-color: #fff ; padding: 2px 2px ; border-radius: 100% ; display: flex ; align-items: center ; margin: 0px 8px 0px 6px ;
+    background: radial-gradient(circle at 10px 8px, var(--color_29), var(--color_30));
+    color: var(--color_20); 
+    padding: 2px 2px ; margin: 0px 8px 0px 6px ; border-radius: 100% ; 
+    display: flex ; align-items: center ; box-shadow: 1px solid var(--color_31);
 }
 .ability-1__type{
     font-size: 18px ; font-weight: 700 ; 
 }
 .ability-1__description{
-    font-size: 12px ; font-weight: 500 ; max-width: 80%;
+    font-size: 12px ; font-weight: 400 ; max-width: 80%;
 }
 .ability-1_in-number{
     display: flex ; flex-direction: row ; justify-content: center ; align-items: center ;
@@ -80,4 +133,83 @@
 }
 .icons_plus{
     font-size: 32px ; font-weight: 600 ; margin-right: 5px ;
+}
+
+.Card_ability-2{
+    display: flex ; flex-direction: row ; align-items: center ; justify-content: space-between ;
+    margin: 0px 9px ; padding: 0px 0px 4px 0px; 
+    border-top: 2px outset var(--color_20) ; border-bottom: 2px solid var(--color_20) ;
+}
+.ability-2_icons{
+    display: flex ; flex-direction: row ; align-items: center ;
+}
+.icons_eye-1{
+    background: radial-gradient(circle at 10px 8px, var(--color_27), var(--color_28));
+    padding: 2px 3px ; border-radius: 100% ; margin: 0px 8px 0px 6px ; 
+    display: flex ; align-items: center ;
+}
+/* .ability-2_con{
+} */
+.ability-2__description{
+    font-size: 12px ; font-weight: 400 ;
+}
+.ability-2__type{
+    font-size: 18px ; font-weight: 700 ; 
+}
+
+.Card_extra{
+    display: flex ; flex-direction: column ; 
+    margin: 0px 18px ;
+}
+.extra_con{
+    display: flex ; flex-direction: row ; align-items: flex-start ; justify-content: space-between ;
+}
+.extra_item-1,.extra_item-2,.extra_item-3{
+    display: flex ; flex-direction: column ; align-items: flex-start ; justify-content: center ;
+}
+.extra__weakness, .extra__resistance, .extra__recost{
+    font-size: 12px ; font-weight: 700 ; display: flex ; justify-content: center ; width: 100%;
+}
+.extra__weakness-icons,.extra__resistance-icons,.extra__recost-icons{
+    display: flex ; flex-direction: row ; justify-content: center ; align-items: center ; 
+    width: 100% ; margin: 2px 0px 0px 0px; 
+}
+.weakness_icons, .resistance_icons{   
+    background: radial-gradient(circle at 10px 8px, var(--color_27), var(--color_28)
+    );
+    padding: 2px 3px ; border-radius: 100% ; 
+    display: flex ; align-items: center ;
+}
+.recost_icons{
+    background: radial-gradient(circle at 10px 8px, var(--color_29), var(--color_30));
+    padding: 2px 2px ; margin: 0px 2px 0px 2px ; border-radius: 100% ; 
+    display: flex ; align-items: center ; 
+}
+/*  */
+.Card_ori{
+    display: flex ; flex-direction: row ; justify-content: center ;
+    width: 100% ; border: 2px outset var(--color_32) ; padding: 1px 8px ; margin: 3px 0px 2px 0px ;
+}
+.ori_p{
+    font-size: 11px ; font-weight: 700 ; font-style: italic ; text-align: center ;
+}
+.ori_level,.ori_id{
+    font-size: 13px ; font-weight: 600 ; font-style: normal ;
+}
+
+.Card_-info{
+    display: flex ; flex-direction: row ; justify-content: space-between ;
+    width: 100% ; margin: 1px 0px ; padding: 0px 4px ;
+}
+.info_illustrator,.info_creator, .info_end{
+    font-size: 9px ;
+}
+.info_end{
+    font-weight: 600 ; display: flex ; align-items: center ;
+}
+.info_illustrator{
+    font-weight: 600 ;
+}
+.icon_end{
+    margin: 0px 0px 0px 3px;
 }
