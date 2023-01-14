@@ -34,7 +34,7 @@
 
 
 .N_{
-  width: 100vw;
+  width: 100%;
   display: flex; flex-direction: row; justify-content: space-between; align-items: center;
   background-color: transparent;
   height: 90px;
@@ -91,7 +91,7 @@
 
 .M_{
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  width: 100vw; height: 80vh;
+  width: 100% ; height: 80vh;
 }
 .M_bg{
   background-image:url('./images/Pokemon_bg.png'),linear-gradient(90deg, var(--color_21) 25%, var(--color_22) 75%); background-size: cover ; background-blend-mode: saturation;
@@ -118,7 +118,7 @@
 /* */
 
 .SB_{
-  width: 100vw; height: 50px; margin: 20px 0px;
+  width: 100%; height: 50px; margin: 20px 0px;
   display: flex ; flex-wrap: wrap ; justify-content: center ; align-items: center ;
 }
 .SB_in{
@@ -152,13 +152,32 @@
 
 .C_{
   display: flex ; flex-direction: column ; justify-content: center ;
-  width: 100vw ; padding: 0px 20px ; overflow: hidden ; 
+  width: 100% ; padding: 0px 20px ; overflow: hidden ; 
 }
 .C_h1{
   font-size: 42px ; text-decoration: underline ; margin: 0px 0px 20px 0px ;
 }
 .C_C{
-  display: flex ; flex-direction: row ; justify-content: center ; align-items: center ; width: 100% ;
+  display: flex ; flex-wrap: wrap; justify-content: space-evenly ; 
+  width: 100% ;
+}
+
+.F_{
+  display: flex ; flex-wrap: wrap ; justify-content: flex-start ; align-items: center ; 
+  width: 100% ; padding: 8px 20px ;
+  background: linear-gradient(90deg, rgba(239,185,173,1) 0%, rgba(245,112,74,1) 50%, rgba(188,0,0,1) 100%) ;
+}
+.F_copyright{
+  display: flex ; flex-wrap: wrap ; justify-content: flex-start ; align-items: flex-start ;
+  width: 100% ; 
+  font-size: 14px ; 
+  color: var(--color_01) ; 
+}
+.copyright_text{
+  font-weight: 500 ; text-shadow: 1px 1px 2px var(--color_02);
+}
+.copyright_icon{
+  font-size: 15px ;
 }
 @keyframes translate_ {
   0%{transform: translate(0px, 0px);}

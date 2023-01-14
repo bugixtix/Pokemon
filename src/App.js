@@ -12,7 +12,7 @@ function App() {
       <Main/>
       <SearchBar/>
       <Content/>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   );
 }

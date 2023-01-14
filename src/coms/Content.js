@@ -9,6 +9,10 @@ export const Content = () => {
         <div className='C_C'>
           <Card/>
           <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
         </div>
     </div>
   )

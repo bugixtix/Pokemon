@@ -39,7 +39,7 @@
       }
 
 .Card_{
-    width: 390px;
+    width: 390px ; margin: 0px 0px 40px 0px;
     border: 18px outset var(--color_26) ; border-radius: 16px ;
     display: flex ; flex-direction: column ; justify-content: center ;
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%) ;
