@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Card.css'
 import {HiStar} from 'react-icons/hi'
 import {BsFillEyeFill} from 'react-icons/bs'
 import {TbNumber1} from 'react-icons/tb'
 import {TbNumber0} from 'react-icons/tb'
 import {AiOutlinePlus} from 'react-icons/ai'
-export const Card = () => {
+export const Card = ({data_,name_,abilities_,index_}) => {
+    var [effect_$, setEffect_$]= useState([])
+    var [effect_ready_$, setEffectReady_$]= useState(false)
+    useEffect(()=>{
+        fetch(abilities_[0].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res])})
+        fetch(abilities_[1].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res]); setEffectReady_$(true)})
+    },[])
+    if(effect_ready_$){
+        if(effect_$[0].effect_entries[0].language.name === 'en'){
+        console.log(effect_$[0].effect_entries[0].effect)
+    }else if(effect_$[0].effect_entries[1].language.name === 'en'){
+        console.log(effect_$[0].effect_entries[1].effect)
+    }}
+    console.log(effect_$)
   return (
     <div className='Card_'>
         <div className='Card_head'>
@@ -13,7 +26,7 @@ export const Card = () => {
                 <p className='head__type'>Basic Pokémon 
                 {/* --type */}
                 </p>
-                <h3 className='head__name'>Mewtwo 
+                <h3 className='head__name'>{name_ || 'Mewtwo'} 
                 {/* --name */}
                 </h3>
             </div>
@@ -40,9 +53,11 @@ export const Card = () => {
                 <span className='icons_star'><HiStar className='star_icon'/></span>
             </div>
             <div className='ability-1__description'>
-                <span className='ability-1__type'>Psychic {//--first_ability_type 
-                    } </span>
-                Does 10 damage plus 10 more damage for each Energy card attached to the Defending Pokémon. 
+                <span className='ability-1__type'>  
+                {abilities_[0].ability.name || 'ability-1'}
+                {/* --first_ability_type  */}
+                </span>
+                {/* {effect_$[0].effect_entries[0].effect || 'effect in text'} */}
                 {/* --first_ability_description */}
             </div>
             <div className='ability-1_in-number'>
@@ -61,7 +76,9 @@ export const Card = () => {
             <div className='ability-2_con'>
                 <div className='ability-2__description'>
                 {/* --second_ability_type */}
-                <span className='ability-2__type'> Barrier </span>
+                <span className='ability-2__type'>
+                {abilities_[1].ability.name || 'ability-1'}
+                </span>
                 Discard I Energy card attached to Mewtwo in order to use this attack. During your opponent's next turn, prevent all effects of attacks, including damage, done to Mewtwo.
                 </div>
             </div>
