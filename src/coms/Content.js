@@ -13,6 +13,7 @@ export const Content = () => {
     },[])
     console.log(pokemon_$)
     // 
+    // 
   return (
     <div className='C_'>
         <h1 className='C_h1'> the latest released cards</h1>
