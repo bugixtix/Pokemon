@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import '../Card.css'
-import {HiStar} from 'react-icons/hi'
-import {BsFillEyeFill} from 'react-icons/bs'
-import {TbNumber1} from 'react-icons/tb'
-import {TbNumber0} from 'react-icons/tb'
+import {HiStar,HiFire} from 'react-icons/hi'
+import {BsFillEyeFill,BsBugFill} from 'react-icons/bs'
+import {TbNumber1,TbNumber0} from 'react-icons/tb'
 import {AiOutlinePlus} from 'react-icons/ai'
+import {ImLeaf,ImDroplet} from 'react-icons/im'
+import {FaDragon,FaGhost,FaMoon,FaFistRaised,FaSnowflake} from 'react-icons/fa'
+import {GiElectric,GiFairyWings,GiLibertyWing,GiGroundbreaker,GiPoisonGas,GiCrossedSwords} from 'react-icons/gi'
+import {SiRootsbedrock} from 'react-icons/si'
+
+
 export const Card = ({data_,name_,abilities_,index_}) => {
     
     var [effect_$, setEffect_$]= useState([])
@@ -13,6 +18,14 @@ export const Card = ({data_,name_,abilities_,index_}) => {
     var [effect_id_$, setEffectId_$] = useState(0)
     var [imgSrc_$,setImgSrc_$] = useState('../images/Mewtwo_card.jpg')
     var [HP_$, setHP_$] = useState(0)
+
+    function Type_(type_){
+
+        return(
+            <span className='HP_icons'><BsFillEyeFill className='icon_HP'/></span>
+        )
+    }
+
     useEffect(()=>{
         fetch(data_.abilities[0].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res])})
         fetch(data_.abilities[1].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res]); setEffectReady_$(true)})

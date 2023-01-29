@@ -74,6 +74,44 @@
      padding: 2px 3px ; border-radius: 100% ; display: flex ; align-items: center ;
      margin: 2px 0px;
 }
+.water_{}
+.flying_{}
+.poison_{}
+.bug_{}
+.steel_{}
+.fire_{}
+.grass_{}
+.dragon_{}
+.electric_{}
+.ground_{}
+.rock_{}
+.ice_{}
+.ghost_{}
+.fighting_{}
+.normal_{}
+.psychic_{}
+.dark_{}
+.fairy_{}
+
+.water_i{}
+.flying_i{}
+.poison_i{}
+.bug_i{}
+.steel_i{}
+.fire_i{}
+.grass_i{}
+.dragon_i{}
+.electric_i{}
+.ground_i{}
+.rock_i{}
+.ice_i{}
+.ghost_i{}
+.fighting_i{}
+.normal_i{}
+.psychic_i{}
+.dark_i{}
+.fairy_i{}
+
 
 .Card_img-con{
     margin: 0px 18px ; height: 220px ; 
