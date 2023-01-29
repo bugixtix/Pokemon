@@ -6,19 +6,32 @@ import {TbNumber1} from 'react-icons/tb'
 import {TbNumber0} from 'react-icons/tb'
 import {AiOutlinePlus} from 'react-icons/ai'
 export const Card = ({data_,name_,abilities_,index_}) => {
+    
     var [effect_$, setEffect_$]= useState([])
+    var [effect_print_$, setEffectPrint_$] = useState([])
     var [effect_ready_$, setEffectReady_$]= useState(false)
+    var [effect_id_$, setEffectId_$] = useState(0)
+    var [imgSrc_$,setImgSrc_$] = useState('../images/Mewtwo_card.jpg')
+    var [HP_$, setHP_$] = useState(0)
     useEffect(()=>{
-        fetch(abilities_[0].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res])})
-        fetch(abilities_[1].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res]); setEffectReady_$(true)})
+        fetch(data_.abilities[0].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res])})
+        fetch(data_.abilities[1].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res]); setEffectReady_$(true)})
     },[])
-    if(effect_ready_$){
-        if(effect_$[0].effect_entries[0].language.name === 'en'){
-        console.log(effect_$[0].effect_entries[0].effect)
-    }else if(effect_$[0].effect_entries[1].language.name === 'en'){
-        console.log(effect_$[0].effect_entries[1].effect)
-    }}
-    console.log(effect_$)
+    useEffect(()=>{
+        
+        if(effect_ready_$){
+            if(effect_$[0].effect_entries[0].language.name == 'en') setEffectPrint_$(prev=>[...prev,effect_$[0].effect_entries[0].effect])
+            else setEffectPrint_$(prev=>[...prev,effect_$[0].effect_entries[1].effect])
+            if(effect_$[1].effect_entries[0].language.name == 'en') setEffectPrint_$(prev=>[...prev,effect_$[1].effect_entries[0].effect])
+            else setEffectPrint_$(prev=>[...prev,effect_$[1].effect_entries[1].effect])
+            setEffectId_$(effect_$[0].id)
+        }
+    },[effect_ready_$])
+    // console.log(effect_$)
+    useEffect(()=>{
+        setImgSrc_$(data_.sprites.other.dream_world.front_default)
+        setHP_$(data_.stats[0].base_stat)
+    },[data_])
   return (
     <div className='Card_'>
         <div className='Card_head'>
@@ -33,7 +46,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
 
             <div className='head_HP'>
                 <div className='HP_con'>
-                <span className='HP_value'> ?? HP </span>
+                <span className='HP_value'> {HP_$} HP </span>
                 <span className='HP_icons'><BsFillEyeFill className='icon_HP'/></span>
                 </div>
 
@@ -42,10 +55,14 @@ export const Card = ({data_,name_,abilities_,index_}) => {
         </div>
         
         <div className='Card_img-con'>
-        <img src={require('../images/Mewtwo_card.jpg')} className='Card__image'/>
+        <img src={imgSrc_$} className='Card__image'/>
         </div>
 
-        <p className='Card_physical'>Genetic Pokémon. Length 6'7", Weight:269 lbs.</p>
+        <p className='Card_physical'>
+            Genetic Pokémon. 
+            <span>&nbsp;{'Length ' + data_.height || `Length 6'7",`}&nbsp;</span>
+            <span>Weight:269 lbs.</span>
+        </p>
 
         <div className='Card_ability-1'>
             <div className='ability-1_icons'>
@@ -57,13 +74,16 @@ export const Card = ({data_,name_,abilities_,index_}) => {
                 {abilities_[0].ability.name || 'ability-1'}
                 {/* --first_ability_type  */}
                 </span>
-                {/* {effect_$[0].effect_entries[0].effect || 'effect in text'} */}
-                {/* --first_ability_description */}
+                { effect_print_$[0] || 'effect in text'}
+                 {/* --first_ability_description */}
             </div>
             <div className='ability-1_in-number'>
-                <TbNumber1 className='icons_one'/>
-                <TbNumber0 className='icons_zero'/>
-                <span className='icons_plus'> + </span>
+
+            {effect_id_$|| 'effect 1 id '}
+
+                    {/* <TbNumber1 className='icons_one'/>
+                    <TbNumber0 className='icons_zero'/>
+                <span className='icons_plus'> + </span> */}
             {/* --first_ability_in_number  */}
             </div>
         </div>
@@ -79,7 +99,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
                 <span className='ability-2__type'>
                 {abilities_[1].ability.name || 'ability-1'}
                 </span>
-                Discard I Energy card attached to Mewtwo in order to use this attack. During your opponent's next turn, prevent all effects of attacks, including damage, done to Mewtwo.
+                {effect_print_$[1] || 'effect 2 in text'}
                 </div>
             </div>
         </div>
@@ -129,8 +149,8 @@ export const Card = ({data_,name_,abilities_,index_}) => {
                     <span className='ori_level'> LV.53 
                     {/* --level */}
                     </span>
-                    <span className='ori_id'> #150 
-                    {/* --id */}
+                    <span className='ori_id'> 
+                    {/* --id */  ' '+'#'+data_.id || 'x'}
                     </span>
                 </p>
             </div>
