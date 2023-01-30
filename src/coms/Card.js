@@ -8,6 +8,7 @@ import {ImLeaf,ImDroplet} from 'react-icons/im'
 import {FaDragon,FaGhost,FaMoon,FaFistRaised,FaSnowflake} from 'react-icons/fa'
 import {GiElectric,GiFairyWings,GiLibertyWing,GiGroundbreaker,GiPoisonGas,GiCrossedSwords} from 'react-icons/gi'
 import {SiRootsbedrock} from 'react-icons/si'
+import {BiCircle} from 'react-icons/bi'
 
 
 export const Card = ({data_,name_,abilities_,index_}) => {
@@ -18,17 +19,41 @@ export const Card = ({data_,name_,abilities_,index_}) => {
     var [effect_id_$, setEffectId_$] = useState(0)
     var [imgSrc_$,setImgSrc_$] = useState('../images/Mewtwo_card.jpg')
     var [HP_$, setHP_$] = useState(0)
+    var [type_$, setType_$] = useState('normal')
 
-    function Type_(type_){
+    function Type_({type_}){
 
         return(
-            <span className='HP_icons'><BsFillEyeFill className='icon_HP'/></span>
+            <span className={`HP_icons ${type_}_`}>
+                {/* <BsFillEyeFill className={`${type_}_i`}/>  */}
+                {type_=='water'?<ImDroplet className={`${type_}_i`}/>
+                :type_=='flying'?<GiLibertyWing className={`${type_}_i`}/>
+                :type_=='poison'?<GiPoisonGas className={`${type_}_i`}/>
+                :type_=='bug'?<BsBugFill className={`${type_}_i`}/>
+                :type_=='steel'?<GiCrossedSwords className={`${type_}_i`}/>
+                :type_=='fire'?<HiFire className={`${type_}_i`}/>
+                :type_=='grass'?<ImLeaf className={`${type_}_i`}/>
+                :type_=='dragon'?<FaDragon className={`${type_}_i`}/>
+                :type_=='electric'?<GiElectric className={`${type_}_i`}/>
+                :type_=='ground'?<GiGroundbreaker className={`${type_}_i`}/>
+                :type_=='rock'?<SiRootsbedrock className={`${type_}_i`}/>
+                :type_=='ice'?<FaSnowflake className={`${type_}_i`}/>
+                :type_=='ghost'?<FaGhost className={`${type_}_i`}/>
+                :type_=='fighting'?<FaFistRaised className={`${type_}_i`}/>
+                :type_=='normal'?<BiCircle className={`${type_}_i`}/>
+                :type_=='psychic'?<BsFillEyeFill className={`${type_}_i`}/>
+                :type_=='dark'?<FaMoon className={`${type_}_i`}/>
+                :type_=='fairy'?<GiFairyWings className={`${type_}_i`}/>
+                :<BiCircle className='normal_i'/>
+            }
+            </span>
         )
     }
 
     useEffect(()=>{
         fetch(data_.abilities[0].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res])})
         fetch(data_.abilities[1].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res]); setEffectReady_$(true)})
+        fetch(data_.forms[0].url).then(res=>res.json()).then(res=>setType_$(res.types[0].type.name))
     },[])
     useEffect(()=>{
         
@@ -49,7 +74,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
     <div className='Card_'>
         <div className='Card_head'>
             <div className='head_con'>
-                <p className='head__type'>Basic Pokémon 
+                <p className='head__type'>Basic Pokémon
                 {/* --type */}
                 </p>
                 <h3 className='head__name'>{name_ || 'Mewtwo'} 
@@ -60,7 +85,8 @@ export const Card = ({data_,name_,abilities_,index_}) => {
             <div className='head_HP'>
                 <div className='HP_con'>
                 <span className='HP_value'> {HP_$} HP </span>
-                <span className='HP_icons'><BsFillEyeFill className='icon_HP'/></span>
+                {/* <span className='HP_icons'><BsFillEyeFill className='icon_HP'/></span> */}
+                <Type_ type_={type_$}/>
                 </div>
 
             {/* ++icon */}
@@ -85,7 +111,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
             <div className='ability-1__description'>
                 <span className='ability-1__type'>  
                 {abilities_[0].ability.name || 'ability-1'}
-                {/* --first_ability_type  */}
+                {/* --first_ability_type  */} &nbsp;
                 </span>
                 { effect_print_$[0] || 'effect in text'}
                  {/* --first_ability_description */}
@@ -110,7 +136,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
                 <div className='ability-2__description'>
                 {/* --second_ability_type */}
                 <span className='ability-2__type'>
-                {abilities_[1].ability.name || 'ability-1'}
+                {abilities_[1].ability.name || 'ability-1'} &nbsp;
                 </span>
                 {effect_print_$[1] || 'effect 2 in text'}
                 </div>
