@@ -5,7 +5,7 @@ import {BsFillEyeFill,BsBugFill} from 'react-icons/bs'
 import {TbNumber1,TbNumber0} from 'react-icons/tb'
 import {AiOutlinePlus} from 'react-icons/ai'
 import {ImLeaf,ImDroplet} from 'react-icons/im'
-import {FaDragon,FaGhost,FaMoon,FaFistRaised,FaSnowflake} from 'react-icons/fa'
+import {FaDragon,FaGhost,FaMoon,FaFistRaised,FaSnowflake, FaLeaf} from 'react-icons/fa'
 import {GiElectric,GiFairyWings,GiLibertyWing,GiGroundbreaker,GiPoisonGas,GiCrossedSwords} from 'react-icons/gi'
 import {SiRootsbedrock} from 'react-icons/si'
 import {BiCircle} from 'react-icons/bi'
@@ -20,6 +20,8 @@ export const Card = ({data_,name_,abilities_,index_}) => {
     var [imgSrc_$,setImgSrc_$] = useState('../images/Mewtwo_card.jpg')
     var [HP_$, setHP_$] = useState(0)
     var [type_$, setType_$] = useState('normal')
+    var [weakness_$, setWeakness_$] = useState([])
+    var [resistance_$, setResistance_$] = useState([])
 
     function Type_({type_}){
 
@@ -32,7 +34,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
                 :type_=='bug'?<BsBugFill className={`${type_}_i`}/>
                 :type_=='steel'?<GiCrossedSwords className={`${type_}_i`}/>
                 :type_=='fire'?<HiFire className={`${type_}_i`}/>
-                :type_=='grass'?<ImLeaf className={`${type_}_i`}/>
+                :type_=='grass'?<FaLeaf className={`${type_}_i`}/>
                 :type_=='dragon'?<FaDragon className={`${type_}_i`}/>
                 :type_=='electric'?<GiElectric className={`${type_}_i`}/>
                 :type_=='ground'?<GiGroundbreaker className={`${type_}_i`}/>
@@ -53,8 +55,18 @@ export const Card = ({data_,name_,abilities_,index_}) => {
     useEffect(()=>{
         fetch(data_.abilities[0].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res])})
         fetch(data_.abilities[1].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res]); setEffectReady_$(true)})
-        fetch(data_.forms[0].url).then(res=>res.json()).then(res=>setType_$(res.types[0].type.name))
+        fetch(data_.forms[0].url).then(res=>res.json()).then((res)=>{
+            setType_$(res.types[0].type.name);
+            fetch(res.types[0].type.url)
+            .then(res_=>res_.json())
+            .then(dataX=>dataX.damage_relations.double_damage_from.forEach(i=>setWeakness_$(prev=>[...prev, i.name]))) ;
+            fetch(res.types[0].type.url)
+            .then(resY=>resY.json())
+            .then(dataY=>dataY.damage_relations.half_damage_from.forEach(i=>setResistance_$(prev=>[...prev,i.name])))
+        })
+        // fetch(data_.forms[0].url).then(res=>res.json()).then(res=>fetch(res.types[0].type.url).then(res_=>res_.json()).then(da=>console.log(da)))
     },[])
+    // console.log(weakness_$)
     useEffect(()=>{
         
         if(effect_ready_$){
@@ -100,7 +112,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
         <p className='Card_physical'>
             Genetic Pokémon. 
             <span>&nbsp;{'Length ' + data_.height || `Length 6'7",`}&nbsp;</span>
-            <span>Weight:269 lbs.</span>
+            <span>&nbsp;{'Weight ' + data_.weight} lbs.</span>
         </p>
 
         <div className='Card_ability-1'>
@@ -150,9 +162,10 @@ export const Card = ({data_,name_,abilities_,index_}) => {
                     {/* --weakness */}
                     </p>
                     <span className='extra__weakness-icons'>
-                        <span className='weakness_icons'>
+                        {/* <span className='weakness_icons'>
                             <BsFillEyeFill className='icon_weakness'/>
-                        </span>
+                        </span> */}
+                        {weakness_$.map((i,index)=> index<3 && (<Type_ type_={i} key={index*9}/>))}
                     </span>
                 </div>
                 <div className='extra_item-2'>
@@ -160,9 +173,10 @@ export const Card = ({data_,name_,abilities_,index_}) => {
                     {/* --resistance */}
                     </p>
                     <span className='extra__resistance-icons'>
-                        <span className='resistance_icons'>
+                        {/* <span className='resistance_icons'>
                             <BsFillEyeFill className='icon_resistance'/>
-                        </span>
+                        </span> */}
+                        {resistance_$.map((i,index)=>index<3 && (<Type_ type_={i} key={index}/>))}
                     </span>
                 </div>
                 <div className='extra_item-3'>
