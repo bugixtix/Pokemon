@@ -124,8 +124,11 @@
 }
 .HP_icons{
      /* border: 2px solid #000; */
-     padding: 4px 4px ; border-radius: 100% ; display: flex ; align-items: center ;
+     padding: 4px ; border-radius: 100% ; display: flex ; align-items: center ;
      margin: 0px 2px;
+}
+.small_i{
+    font-size: 14px;
 }
 .water_{
     background: radial-gradient(circle at 10px 4px, var(--water_01), var(--color_00)) ;

@@ -23,29 +23,29 @@ export const Card = ({data_,name_,abilities_,index_}) => {
     var [weakness_$, setWeakness_$] = useState([])
     var [resistance_$, setResistance_$] = useState([])
 
-    function Type_({type_}){
+    function Type_({type_,small=false}){
 
         return(
             <span className={`HP_icons ${type_}_`}>
                 {/* <BsFillEyeFill className={`${type_}_i`}/>  */}
-                {type_=='water'?<ImDroplet className={`${type_}_i`}/>
-                :type_=='flying'?<GiLibertyWing className={`${type_}_i`}/>
-                :type_=='poison'?<GiPoisonGas className={`${type_}_i`}/>
-                :type_=='bug'?<BsBugFill className={`${type_}_i`}/>
-                :type_=='steel'?<GiCrossedSwords className={`${type_}_i`}/>
-                :type_=='fire'?<HiFire className={`${type_}_i`}/>
-                :type_=='grass'?<FaLeaf className={`${type_}_i`}/>
-                :type_=='dragon'?<FaDragon className={`${type_}_i`}/>
-                :type_=='electric'?<GiElectric className={`${type_}_i`}/>
-                :type_=='ground'?<GiGroundbreaker className={`${type_}_i`}/>
-                :type_=='rock'?<SiRootsbedrock className={`${type_}_i`}/>
-                :type_=='ice'?<FaSnowflake className={`${type_}_i`}/>
-                :type_=='ghost'?<FaGhost className={`${type_}_i`}/>
-                :type_=='fighting'?<FaFistRaised className={`${type_}_i`}/>
-                :type_=='normal'?<BiCircle className={`${type_}_i`}/>
-                :type_=='psychic'?<BsFillEyeFill className={`${type_}_i`}/>
-                :type_=='dark'?<FaMoon className={`${type_}_i`}/>
-                :type_=='fairy'?<GiFairyWings className={`${type_}_i`}/>
+                {type_=='water'?<ImDroplet className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='flying'?<GiLibertyWing className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='poison'?<GiPoisonGas className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='bug'?<BsBugFill className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='steel'?<GiCrossedSwords className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='fire'?<HiFire className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='grass'?<FaLeaf className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='dragon'?<FaDragon className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='electric'?<GiElectric className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='ground'?<GiGroundbreaker className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='rock'?<SiRootsbedrock className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='ice'?<FaSnowflake className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='ghost'?<FaGhost className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='fighting'?<FaFistRaised className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='normal'?<BiCircle className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='psychic'?<BsFillEyeFill className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='dark'?<FaMoon className={`${type_}_i ${small?'small_i':''}`}/>
+                :type_=='fairy'?<GiFairyWings className={`${type_}_i ${small?'small_i':''}`}/>
                 :<BiCircle className='normal_i'/>
             }
             </span>
@@ -165,7 +165,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
                         {/* <span className='weakness_icons'>
                             <BsFillEyeFill className='icon_weakness'/>
                         </span> */}
-                        {weakness_$.map((i,index)=> index<3 && (<Type_ type_={i} key={index*9}/>))}
+                        {weakness_$.map((i,index)=> index<3 && (<Type_ type_={i} key={index*9} small={true}/>))}
                     </span>
                 </div>
                 <div className='extra_item-2'>
@@ -176,7 +176,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
                         {/* <span className='resistance_icons'>
                             <BsFillEyeFill className='icon_resistance'/>
                         </span> */}
-                        {resistance_$.map((i,index)=>index<3 && (<Type_ type_={i} key={index}/>))}
+                        {resistance_$.map((i,index)=>index<3 && (<Type_ type_={i} key={index} small={true}/>))}
                     </span>
                 </div>
                 <div className='extra_item-3'>
