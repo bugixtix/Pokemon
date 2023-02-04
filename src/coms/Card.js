@@ -72,7 +72,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
         if(effect_ready_$){
             if(effect_$[0].effect_entries[0].language.name == 'en') setEffectPrint_$(prev=>[...prev,effect_$[0].effect_entries[0].effect])
             else setEffectPrint_$(prev=>[...prev,effect_$[0].effect_entries[1].effect])
-            if(effect_$[1].effect_entries[0].language.name == 'en') setEffectPrint_$(prev=>[...prev,effect_$[1].effect_entries[0].effect])
+            if(effect_$[1].effect_entries[0].language.name&&effect_$[1].effect_entries[0].language.name == 'en') setEffectPrint_$(prev=>[...prev,effect_$[1].effect_entries[0].effect])
             else setEffectPrint_$(prev=>[...prev,effect_$[1].effect_entries[1].effect])
             setEffectId_$(effect_$[0].id)
         }
@@ -111,8 +111,8 @@ export const Card = ({data_,name_,abilities_,index_}) => {
 
         <p className='Card_physical'>
             Genetic Pokémon. 
-            <span>&nbsp;{'Length ' + data_.height || `Length 6'7",`}&nbsp;</span>
-            <span>&nbsp;{'Weight ' + data_.weight} lbs.</span>
+            <span>&nbsp;{'Height ' + data_.height + ' dm.' || `Length 6'7",`}</span>
+            <span>&nbsp;{'Weight ' + data_.weight/10} kg</span>
         </p>
 
         <div className='Card_ability-1'>
@@ -122,7 +122,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
             </div>
             <div className='ability-1__description'>
                 <span className='ability-1__type'>  
-                {abilities_[0].ability.name || 'ability-1'}
+                {/* {abilities_[0].ability.name || 'ability-1'} */}
                 {/* --first_ability_type  */} &nbsp;
                 </span>
                 { effect_print_$[0] || 'effect in text'}
@@ -148,7 +148,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
                 <div className='ability-2__description'>
                 {/* --second_ability_type */}
                 <span className='ability-2__type'>
-                {abilities_[1].ability.name || 'ability-1'} &nbsp;
+                {/* {abilities_[1].ability.name || 'ability-1'} &nbsp; */}
                 </span>
                 {effect_print_$[1] || 'effect 2 in text'}
                 </div>
