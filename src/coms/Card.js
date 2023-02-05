@@ -22,9 +22,9 @@ export const Card = ({data_,name_,abilities_,index_}) => {
     var [type_$, setType_$] = useState('normal')
     var [weakness_$, setWeakness_$] = useState([])
     var [resistance_$, setResistance_$] = useState([])
+    var [species_$, setSpecies_$] = useState('')
 
-    function Type_({type_,small=false}){
-
+    function Type_({type_,small=false}){        
         return(
             <span className={`HP_icons ${type_}_`}>
                 {/* <BsFillEyeFill className={`${type_}_i`}/>  */}
@@ -52,6 +52,47 @@ export const Card = ({data_,name_,abilities_,index_}) => {
         )
     }
 
+    function WordCount(str) { 
+        return str.split(" ").length;
+      }
+
+    function Recost ({base_experience=0}){
+        return(
+            <span className='extra__recost-icons'>
+                {base_experience>100&&base_experience<150 ? 
+                <span className='extra__recost-icons'>
+                <span className='recost_icons'>
+                    <HiStar className='icon_recost-1'/>
+                </span> 
+                <span className='recost_icons'>
+                <HiStar className='icon_recost-2'/>
+                </span>    
+                </span>    
+                :
+                base_experience>150 ? 
+                <span className='extra__recost-icons'>
+                    <span className='recost_icons'>
+                        <HiStar className='icon_recost-1'/>
+                    </span> 
+                    <span className='recost_icons'>
+                        <HiStar className='icon_recost-2'/>
+                    </span>
+                    <span className='recost_icons'>
+                        <HiStar className='icon_recost-3'/>
+                    </span> 
+                </span>
+                :
+                <span className='extra__recost-icons'>
+                <span className='recost_icons'>
+                    <HiStar className='icon_recost-1'/>
+                </span> 
+                </span>
+                }
+                
+            </span>
+        )
+    }  
+
     useEffect(()=>{
         fetch(data_.abilities[0].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res])})
         fetch(data_.abilities[1].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res]); setEffectReady_$(true)})
@@ -64,29 +105,35 @@ export const Card = ({data_,name_,abilities_,index_}) => {
             .then(resY=>resY.json())
             .then(dataY=>dataY.damage_relations.half_damage_from.forEach(i=>setResistance_$(prev=>[...prev,i.name])))
         })
-        // fetch(data_.forms[0].url).then(res=>res.json()).then(res=>fetch(res.types[0].type.url).then(res_=>res_.json()).then(da=>console.log(da)))
+        fetch(data_.species.url).then(res=>res.json()).then(res=>res.is_baby?setSpecies_$('baby'):res.is_legendary?setSpecies_$('legendary'):res.is_mythical?setSpecies_$('mythical'):setSpecies_$('basic'))
     },[])
-    // console.log(weakness_$)
     useEffect(()=>{
         
         if(effect_ready_$){
-            if(effect_$[0].effect_entries[0].language.name == 'en') setEffectPrint_$(prev=>[...prev,effect_$[0].effect_entries[0].effect])
-            else setEffectPrint_$(prev=>[...prev,effect_$[0].effect_entries[1].effect])
-            if(effect_$[1].effect_entries[0].language.name&&effect_$[1].effect_entries[0].language.name == 'en') setEffectPrint_$(prev=>[...prev,effect_$[1].effect_entries[0].effect])
-            else setEffectPrint_$(prev=>[...prev,effect_$[1].effect_entries[1].effect])
-            setEffectId_$(effect_$[0].id)
+            if(effect_$[0].effect_entries[0].language.name == 'en') {setEffectPrint_$(prev=>[...prev,effect_$[0].effect_entries[0].effect]) ; setEffectId_$(effect_$[0].id) ;}
+            else { setEffectPrint_$(prev=>[...prev,effect_$[0].effect_entries[1].effect]) ; setEffectId_$(effect_$[0].id) ;}
+            // if(effect_$[1].effect_entries[0].language.name&&effect_$[1].effect_entries[0].language.name == 'en') setEffectPrint_$(prev=>[...prev,effect_$[1].effect_entries[0].effect])
+            // else setEffectPrint_$(prev=>[...prev,effect_$[1].effect_entries[1].effect])
+            
         }
+        console.log(WordCount('hello there '))
     },[effect_ready_$])
     // console.log(effect_$)
     useEffect(()=>{
         setImgSrc_$(data_.sprites.other.dream_world.front_default)
         setHP_$(data_.stats[0].base_stat)
+        // Math.random()>0.
     },[data_])
+    useEffect(()=>{
+        document.getElementById('imgDiv').style.setProperty('background','#000000')
+    },[])
   return (
     <div className='Card_'>
+        <div>
         <div className='Card_head'>
             <div className='head_con'>
-                <p className='head__type'>Basic Pokémon
+                <p className='head__type'>
+                    <span className='type_s'>{species_$}</span>
                 {/* --type */}
                 </p>
                 <h3 className='head__name'>{name_ || 'Mewtwo'} 
@@ -105,16 +152,18 @@ export const Card = ({data_,name_,abilities_,index_}) => {
             </div>
         </div>
         
-        <div className='Card_img-con'>
+        <div className='Card_img-con' id='imgDiv'>
         <img src={imgSrc_$} className='Card__image'/>
         </div>
 
         <p className='Card_physical'>
-            Genetic Pokémon. 
+            <span>&nbsp;{data_.types[0].type.name + ' ' + 'Pokèmon.' || 'Genetic Pokémon.'}</span> 
             <span>&nbsp;{'Height ' + data_.height + ' dm.' || `Length 6'7",`}</span>
-            <span>&nbsp;{'Weight ' + data_.weight/10} kg</span>
+            <span>&nbsp;{'Weight ' + data_.weight/10} kg.</span>
         </p>
+        </div>
 
+        <div>
         <div className='Card_ability-1'>
             <div className='ability-1_icons'>
                 <span className='icons_eye'><BsFillEyeFill className='eye_icon'/></span>
@@ -123,9 +172,9 @@ export const Card = ({data_,name_,abilities_,index_}) => {
             <div className='ability-1__description'>
                 <span className='ability-1__type'>  
                 {/* {abilities_[0].ability.name || 'ability-1'} */}
-                {/* --first_ability_type  */} &nbsp;
+                {/* --first_ability_type  */}
                 </span>
-                { effect_print_$[0] || 'effect in text'}
+                {effect_print_$[0] || 'effect in text'}
                  {/* --first_ability_description */}
             </div>
             <div className='ability-1_in-number'>
@@ -138,23 +187,9 @@ export const Card = ({data_,name_,abilities_,index_}) => {
             {/* --first_ability_in_number  */}
             </div>
         </div>
-
-        <div className='Card_ability-2'>
-            <div className='ability-2_icons'>
-                <span className='icons_eye'><BsFillEyeFill className='eye_icon'/></span>
-                <span className='icons_eye-1'><BsFillEyeFill className='eye_icon'/></span>
-            </div>
-            <div className='ability-2_con'>
-                <div className='ability-2__description'>
-                {/* --second_ability_type */}
-                <span className='ability-2__type'>
-                {/* {abilities_[1].ability.name || 'ability-1'} &nbsp; */}
-                </span>
-                {effect_print_$[1] || 'effect 2 in text'}
-                </div>
-            </div>
         </div>
 
+                <div>
             <div className='Card_extra'>
                 <div className='extra_con'>
                 <div className='extra_item-1'>
@@ -176,15 +211,15 @@ export const Card = ({data_,name_,abilities_,index_}) => {
                         {/* <span className='resistance_icons'>
                             <BsFillEyeFill className='icon_resistance'/>
                         </span> */}
-                        {resistance_$.map((i,index)=>index<3 && (<Type_ type_={i} key={index} small={true}/>))}
+                        {resistance_$.length!=0 ? resistance_$.map((i,index)=>index<3 && (<Type_ type_={i} key={index} small={true}/>)) : '-'}
                     </span>
                 </div>
                 <div className='extra_item-3'>
                     <p className='extra__recost'>retreat cost 
                     {/* --recost */}
                     </p>
-                    <span className='extra__recost-icons'>
-                        <span className='recost_icons'>
+                    {/* <span className='extra__recost-icons'> */}
+                        {/* <span className='recost_icons'>
                             <HiStar className='icon_recost-1'/>
                         </span>
                         <span className='recost_icons'>
@@ -192,16 +227,17 @@ export const Card = ({data_,name_,abilities_,index_}) => {
                         </span>
                         <span className='recost_icons'>
                             <HiStar className='icon_recost-3'/>
-                        </span>
-                    </span>
+                        </span> */}
+                        <Recost base_experience={data_.base_experience}/>
+                    {/* </span> */}
                 </div>
                 </div>
             <div className='Card_ori'>
-                <p className='ori_p'>Ascientist created this Pokémon after years of horrific genesplicing and DNA engineering experiments. 
+                <p className='ori_p'>
                  {/*--ori  */}
-                    <span className='ori_level'> LV.53 
-                    {/* --level */}
-                    </span>
+                    {/* <span className='ori_level'> LV.53 
+                    
+                    </span> */}
                     <span className='ori_id'> 
                     {/* --id */  ' '+'#'+data_.id || 'x'}
                     </span>
@@ -216,14 +252,14 @@ export const Card = ({data_,name_,abilities_,index_}) => {
                 <p className='info_creator'>c1995. 96 98 Nintendo Creatures, GAMEFREAK c 1999
                 {/*  --creator */}
                 </p>
-                <p className='info_end'>10/102
+                <p className='info_end'>xx/yyy
                 {/*  --unknown_number */} 
                 <span>
                     <HiStar className='icon_end'/>
                 </span>
                 </p>
             </div>
-
+            </div>
     </div>
   )
 }

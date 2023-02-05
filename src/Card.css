@@ -90,27 +90,33 @@
     --fairy_00:#280303;
     --fairy_01:#6f3b3b;
     --fairy_x:#a60e0e;
+    --color_ic:#336699;
 }
 
 .Card_{
-    width: 390px ; margin: 0px 0px 40px 0px;
+    width: 390px ; margin: 0px 0px 40px 0px; height: 601px;
     border: 18px outset var(--color_26) ; border-radius: 16px ;
-    display: flex ; flex-direction: column ; justify-content: center ;
+    display: flex ; flex-direction: column ; justify-content: space-between ;
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%) ;
 }
 
 .Card_head{
-    display: flex ; flex-direction: row ; justify-content: space-between ; padding: 0px 18px;
+    display: flex ; flex-direction: row ; justify-content: space-between ; padding: 0px 18px 4px 18px;
 }
 .head_con{
     display: flex ; flex-direction: column ; 
     /* height: 40px; */
+}
+.type_s{
+    text-transform: uppercase;
 }
 .head__type{
     font-size: 12px ; font-weight: 600 ; line-height: 2px ; padding-top: 12px ;
 }
 .head__name{
     font-weight: 700 ;
+    text-transform: uppercase;
+    padding: 2px 0px ;
 }
 .head_HP{
     display: flex ; justify-content: center ; align-items: flex-end;
@@ -248,10 +254,9 @@
 
 .Card_img-con{
     margin: 0px 18px ; height: 220px ; 
-    background-color: var(--color_26); 
+    background: var(--color_ic); 
     border-radius: 4px;
     display: flex ; align-items: flex-start ;
-
 }
 .Card__image{
     width: 100% ; height: 100% ; padding: 10px ; margin: auto ; 
@@ -261,16 +266,21 @@
 }
 
 .Card_physical{
-    font-size: 12px ; font-weight: 700 ; font-style: italic;
+    font-size: 12px ; font-weight: 700 ; font-style: italic; text-transform: capitalize;
     text-align: center ;
     padding: 4px 2px 1px 2px ; margin: 6px 40px 0px 40px ; 
     background: linear-gradient(90deg, rgba(177,133,23,1) 0%, rgba(255,210,95,1) 50%, rgba(177,133,23,1) 100%);
     display: flex ; flex-direction: row ; align-items: center ; justify-content: center ; 
 }
-
 .Card_ability-1{
     display: flex ; flex-direction: row ; justify-content: space-between ;
-    padding: 0px 9px ; width: 100% ; margin: 12px 0px 8px 0px ;
+    padding: 0px 9px ; width: 100% ; margin: 12px 0px 8px 0px ; position: relative;
+}
+.Card_ability-1::before{
+    height: 1px ; content: ''; position: absolute ; top: -1px ; background: var(--color_19) ; width: 94%; left: 3%;
+}
+.Card_ability-1::after{
+    height: 1px ; content: ''; position: absolute ; bottom : -4px ; background: var(--color_19) ; width: 94%; left: 3%; border-radius: 4px;
 }
 .ability-1_icons{
     display: flex ; flex-direction: row ; justify-content: center ; align-items: center ;
@@ -384,4 +394,9 @@
 }
 .icon_end{
     margin: 0px 0px 0px 3px;
+}
+@media screen and (max-width:376px) {
+    .Card_{
+        height: 680px;
+    }    
 }
