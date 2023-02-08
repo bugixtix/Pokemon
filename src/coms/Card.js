@@ -9,6 +9,7 @@ import {FaDragon,FaGhost,FaMoon,FaFistRaised,FaSnowflake, FaLeaf} from 'react-ic
 import {GiElectric,GiFairyWings,GiLibertyWing,GiGroundbreaker,GiPoisonGas,GiCrossedSwords} from 'react-icons/gi'
 import {SiRootsbedrock} from 'react-icons/si'
 import {BiCircle} from 'react-icons/bi'
+import { type } from '@testing-library/user-event/dist/type'
 
 
 export const Card = ({data_,name_,abilities_,index_}) => {
@@ -23,7 +24,29 @@ export const Card = ({data_,name_,abilities_,index_}) => {
     var [weakness_$, setWeakness_$] = useState([])
     var [resistance_$, setResistance_$] = useState([])
     var [species_$, setSpecies_$] = useState('')
+    var [imgbg_$, setImgbg_$] = useState('normal_')
 
+    function imgBg_generator(type_){
+        type_=='water'?setImgbg_$('water_'):
+        type_=='flying'?setImgbg_$('flying_'):
+        type_=='poison'?setImgbg_$('poison_'):
+        type_=='bug'?setImgbg_$('bug_'):
+        type_=='steel'?setImgbg_$('steel_'):
+        type_=='fire'?setImgbg_$('fire_'):
+        type_=='grass'?setImgbg_$('grass_'):
+        type_=='dragon'?setImgbg_$('dragon_'):
+        type_=='electric'?setImgbg_$('electric_'):
+        type_=='ground'?setImgbg_$('ground_'):
+        type_=='rock'?setImgbg_$('rock_'):
+        type_=='ice'?setImgbg_$('ice_'):
+        type_=='ghost'?setImgbg_$('ghost_'):
+        type_=='fighting'?setImgbg_$('fighting_'):
+        type_=='psychic'?setImgbg_$('psychic_'):
+        type_=='normal'?setImgbg_$('normal_'):
+        type_=='dark'?setImgbg_$('dark_'):
+        type_=='fairy'?setImgbg_$('fairy_'):
+        setImgbg_$('unknownType_')
+    }
     function Type_({type_,small=false}){        
         return(
             <span className={`HP_icons ${type_}_`}>
@@ -116,17 +139,17 @@ export const Card = ({data_,name_,abilities_,index_}) => {
             // else setEffectPrint_$(prev=>[...prev,effect_$[1].effect_entries[1].effect])
             
         }
-        console.log(WordCount('hello there '))
+        // console.log(WordCount('hello there '))
     },[effect_ready_$])
     // console.log(effect_$)
     useEffect(()=>{
         setImgSrc_$(data_.sprites.other.dream_world.front_default)
         setHP_$(data_.stats[0].base_stat)
-        // Math.random()>0.
+        imgBg_generator(data_.types[0].type.name)
     },[data_])
-    useEffect(()=>{
-        document.getElementById('imgDiv').style.setProperty('background','#000000')
-    },[])
+    // useEffect(()=>{
+    //     document.querySelector('.imgDiv').style.background='#000000'
+    // },[data_.types[0].type.name])
   return (
     <div className='Card_'>
         <div>
@@ -152,7 +175,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
             </div>
         </div>
         
-        <div className='Card_img-con' id='imgDiv'>
+        <div className={`Card_img-con ${imgbg_$}`}>
         <img src={imgSrc_$} className='Card__image'/>
         </div>
 
@@ -166,8 +189,9 @@ export const Card = ({data_,name_,abilities_,index_}) => {
         <div>
         <div className='Card_ability-1'>
             <div className='ability-1_icons'>
-                <span className='icons_eye'><BsFillEyeFill className='eye_icon'/></span>
-                <span className='icons_star'><HiStar className='star_icon'/></span>
+                {/* <span className='icons_eye'><BsFillEyeFill className='eye_icon'/></span>
+                <span className='icons_star'><HiStar className='star_icon'/></span> */}
+                <span className='icons_con'><Type_ type_={type_$}/>{data_.base_experience<100&&<span className='icons_star'><HiStar className='star_icon'/></span> }</span>
             </div>
             <div className='ability-1__description'>
                 <span className='ability-1__type'>  

@@ -131,7 +131,11 @@
 .HP_icons{
      /* border: 2px solid #000; */
      padding: 4px ; border-radius: 100% ; display: flex ; align-items: center ;
-     margin: 0px 2px;
+     margin: 2px 2px;
+}
+.icons_con{
+    display: flex ; flex-wrap: wrap ;
+    padding: 0px 8px;
 }
 .small_i{
     font-size: 14px;
@@ -190,7 +194,9 @@
 .fairy_{
     background: radial-gradient(circle at 10px 8px, var(--fairy_01), var(--color_00)) ;
 }
-
+.unknownType{
+    background: radial-gradient(circle at 10px 8px, var(--color_08), var(--color_07)) ;
+}
 .water_i{
     color: var(--water_x);
 }
@@ -227,7 +233,6 @@
 .rock_i{
     color: var(--rock_x);
     padding: 1px;
-
 }
 .ice_i{
     color: var(--ice_x);
@@ -254,7 +259,7 @@
 
 .Card_img-con{
     margin: 0px 18px ; height: 220px ; 
-    background: var(--color_ic); 
+    /* background: var(--color_ic);  */
     border-radius: 4px;
     display: flex ; align-items: flex-start ;
 }
@@ -294,8 +299,8 @@
 .icons_star{
     background: radial-gradient(circle at 10px 8px, var(--color_29), var(--color_30));
     color: var(--color_20); 
-    padding: 2px 2px ; margin: 0px 8px 0px 6px ; border-radius: 100% ; 
-    display: flex ; align-items: center ; box-shadow: 1px solid var(--color_31);
+    padding: 4px ; margin: 4px 2px 0px 2px; border-radius: 100% ; 
+    display: flex ; align-items: center ; box-shadow: 1px solid var(--color_31); justify-content: center;
 }
 .ability-1__type{
     font-size: 18px ; font-weight: 700 ; 
