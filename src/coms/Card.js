@@ -188,7 +188,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
 
         <div>
         <div className='Card_ability-1'>
-            <div className='ability-1_icons'>
+            <div className='ability-1_icons'> 
                 {/* <span className='icons_eye'><BsFillEyeFill className='eye_icon'/></span>
                 <span className='icons_star'><HiStar className='star_icon'/></span> */}
                 <span className='icons_con'><Type_ type_={type_$}/>{data_.base_experience<100&&<span className='icons_star'><HiStar className='star_icon'/></span> }</span>
