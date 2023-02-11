@@ -117,8 +117,8 @@ export const Card = ({data_,name_,abilities_,index_}) => {
     }  
 
     useEffect(()=>{
-        fetch(data_.abilities[0].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res])})
-        fetch(data_.abilities[1].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res]); setEffectReady_$(true)})
+        fetch(data_.abilities[0].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res]);setEffectReady_$(true)})
+        // data_.abilities[1].ability!=undefined &&fetch(data_.abilities[1].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res]); setEffectReady_$(true)})
         fetch(data_.forms[0].url).then(res=>res.json()).then((res)=>{
             setType_$(res.types[0].type.name);
             fetch(res.types[0].type.url)
