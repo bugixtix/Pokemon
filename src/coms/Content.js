@@ -11,6 +11,7 @@ export const Content = () => {
   var [endIndex_$, setEnd_$] = useState(1260)
   var [array_$,setArray_$] = useState([])
   var [allData_$, setAllData_$] = useState([])
+  var [allData_2, setAllData_2] = useState([])
   let allPoks = [];
   let url_20 = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=19'
 
@@ -21,9 +22,16 @@ export const Content = () => {
     },[startIndex_$])
   
   useEffect(()=>{
-      fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${18}&limit=${18}`).then(res=>res.json()).then((res)=>{res.results.forEach((i)=>{fetch(i.url).then(res=>res.json()).then(res=>setAllData_$(prev=>[...prev,[res]]))})})
+      // fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${18}&limit=${18}`).then(res=>res.json()).then((res)=>{res.results.forEach((i)=>{fetch(i.url).then(res=>res.json()).then(res=>setAllData_$(prev=>[...prev,res]))})})
+
+      for (let i = 0; i <= 36; i++){
+        fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${i*35}&limit=${35}`).then(res=>res.json()).then((res)=>{res.results.forEach((i)=>{fetch(i.url).then(res=>res.json()).then((res)=>{setAllData_$(prev=>[...prev,res]);setAllData_2((prev)=>([...prev,allData_$]))})})})
+          
+        
+      }
   },[])
   console.log(allData_$)
+  console.log(allData_2)
 
     useEffect(()=>{
       document.querySelector('.prev_').addEventListener('click',()=>{
@@ -38,22 +46,11 @@ export const Content = () => {
       startIndex_$<0 ? setStart_$(0) : startIndex_$>1279 ? setStart_$(1279) : console.log(`site nr. ${Math.round(startIndex_$/19)}`)
     },[startIndex_$])
 
-    function Fetchem ({pro}){
-      // console.log(all_$)
-      useEffect(()=>{
-        // all_$.forEach((i,index)=>{fetch(i.url).then(res=>res.json()).then(res=>setArray_$(res))})
-      },[allPoks])
-      return(
-        <span>
-          {/* {array_$.map(i=>(<h1> {i.name} </h1>))} */}
-        </span>
-      )
-    }
   return (
     <div className='C_'>
         <h1 className='C_h1'> Some Cards </h1>
         <div className='C_C'>
-          {array_$.map((i,index)=><Card index_={index} name_={i.name} data_={i} key={index}/>)}
+          {/* {array_$.map((i,index)=><Card index_={index} name_={i.name} data_={i} key={index}/>)} */}
         </div>
         <div className='C_C1'>
           <button className='C_btn prev_'>
