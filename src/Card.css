@@ -94,7 +94,7 @@
 }
 
 .Card_{
-    width: 390px ; margin: 0px 0px 40px 0px; height: 601px;
+    width: 390px ; margin: 0px 0px 40px 0px; min-height: 601px; position: relative;
     border: 18px outset var(--color_26) ; border-radius: 16px ;
     display: flex ; flex-direction: column ; justify-content: space-between ;
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%) ;
@@ -109,6 +109,17 @@
 }
 .type_s{
     text-transform: uppercase;
+    background:#4a5ae7;
+    padding: 0px 2px; border-radius: 2px;
+}
+.s_baby{
+    background:var(--color_03);
+}
+.s_myt{
+    background:var(--poison_01);
+}
+.s_leg{
+    background:var(--color_08);
 }
 .head__type{
     font-size: 12px ; font-weight: 600 ; line-height: 2px ; padding-top: 12px ;

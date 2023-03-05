@@ -118,7 +118,6 @@ export const Card = ({data_,name_,abilities_,index_}) => {
 
     useEffect(()=>{
         fetch(data_.abilities[0].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res]);setEffectReady_$(true)})
-        // data_.abilities[1].ability!=undefined &&fetch(data_.abilities[1].ability.url).then(res=>res.json()).then((res)=>{setEffect_$(prev=>[...prev, res]); setEffectReady_$(true)})
         fetch(data_.forms[0].url).then(res=>res.json()).then((res)=>{
             setType_$(res.types[0].type.name);
             fetch(res.types[0].type.url)
@@ -132,31 +131,31 @@ export const Card = ({data_,name_,abilities_,index_}) => {
     },[])
     useEffect(()=>{
         
-        if(effect_ready_$){
-            if(effect_$[0].effect_entries[0].language.name == 'en') {setEffectPrint_$(prev=>[...prev,effect_$[0].effect_entries[0].effect]) ; setEffectId_$(effect_$[0].id) ;}
+        if(effect_ready_$ && effect_$[0]!=undefined&&effect_$[0].effect_entries[0] !=undefined&&effect_$[0].effect_entries[0].language!=undefined ){
+            if( effect_$[0].effect_entries[0].language != undefined && effect_$[0].effect_entries[0].language.name != undefined && (effect_$[0].effect_entries[0].language.name == 'en')) {setEffectPrint_$(prev=>[...prev,effect_$[0].effect_entries[0].effect]) ; setEffectId_$(effect_$[0].id) ;}
+            else if(effect_$[0].effect_entries[0].language != undefined && effect_$[0].effect_entries[0].language.name == undefined){setEffectPrint_$(prev=>[...prev,'there is no effect found for this pokemon'])}
             else { setEffectPrint_$(prev=>[...prev,effect_$[0].effect_entries[1].effect]) ; setEffectId_$(effect_$[0].id) ;}
-            // if(effect_$[1].effect_entries[0].language.name&&effect_$[1].effect_entries[0].language.name == 'en') setEffectPrint_$(prev=>[...prev,effect_$[1].effect_entries[0].effect])
-            // else setEffectPrint_$(prev=>[...prev,effect_$[1].effect_entries[1].effect])
-            
         }
-        // console.log(WordCount('hello there '))
     },[effect_ready_$])
-    // console.log(effect_$)
     useEffect(()=>{
-        setImgSrc_$(data_.sprites.other.dream_world.front_default)
+        if(data_.sprites.other.dream_world.front_default!=undefined){
+            setImgSrc_$(data_.sprites.other.dream_world.front_default)
+        }else if((data_.sprites.other['official-artwork'])!=undefined){
+            setImgSrc_$(data_.sprites.other['official-artwork'].front_default)
+        }
+        else{setImgSrc_$(data_.sprites.other.home.front_default)}
+
         setHP_$(data_.stats[0].base_stat)
         imgBg_generator(data_.types[0].type.name)
     },[data_])
-    // useEffect(()=>{
-    //     document.querySelector('.imgDiv').style.background='#000000'
-    // },[data_.types[0].type.name])
+
   return (
     <div className='Card_'>
         <div>
         <div className='Card_head'>
             <div className='head_con'>
                 <p className='head__type'>
-                    <span className='type_s'>{species_$}</span>
+                    <span className={`type_s ${species_$=='baby' ? 's_baby':species_$=='legendary'?'s_leg':species_$=='mythical'?'s_myt':''}`}>{species_$}</span>
                 {/* --type */}
                 </p>
                 <h3 className='head__name'>{name_ || 'Mewtwo'} 
