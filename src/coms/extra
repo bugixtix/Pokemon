@@ -1,0 +1,45 @@
+    // useEffect(()=>{
+    //   document.querySelector('.prev_').addEventListener('click',()=>{
+    //     if(count.current > 0){setArray_$([]);count.current -= 18;}
+    //   })
+
+      
+    //   document.querySelector('.next_').addEventListener('click',()=>{
+        
+    //     if(count.current<= 1260){setArray_$([]);count.current += 18;}
+    //   })
+      
+    //   document.querySelector('.firstSite_').addEventListener('click',()=>{
+        
+    //     setArray_$([]);
+    //     count.current -= count.current;
+    //   })
+
+    //   document.querySelector('.lastSite_').addEventListener('click',()=>{
+        
+    //     setArray_$([]);
+    //     count.current=1000
+    //   })
+
+    // },[])
+
+
+            {/* <div className='C_C1'>
+          <button className='C_btn prev_'>
+            previous
+          </button>
+          <span>
+          <button className='C_btn firstSite_' disabled={count.current==0}>
+            First Site
+          </button>          
+          <button className='C_btn site_btn'>
+            X
+          </button>          
+          <button className='C_btn lastSite_'>
+            Last Site
+          </button>
+          </span>
+          <button className='C_btn next_'>
+            next
+          </button>
+        </div>   */}
