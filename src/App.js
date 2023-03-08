@@ -15,15 +15,11 @@ function App() {
     fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1279').then(res=>res.json()).then(res=>setAllPokemons_$(res.results))
   },[])
 
-  useEffect(() => {
-    // console.log(searchV_$)
-  }, [searchV_$])
   
   return (
     <div className="App">
       <Navbar/>
-      <Main searchV_$={searchV_$} setSearchV_$={setSearchV_$} allPokemons_$={allPokemons_$} setTrig_$={setTrig_$}/>
-      {/* <SearchBar searchV_$={searchV_$} setSearchV_$={setSearchV_$} allPokemons_$={allPokemons_$} setTrig_$={setTrig_$}/> */}
+      <Main searchV_$={searchV_$} setSearchV_$={setSearchV_$} allPokemons_$={allPokemons_$} setTrig_$={setTrig_$} ResultsTrig_$={ResultsTrig_$}/>
       <SearchResults searchV_$={searchV_$} ResultsTrig_$={ResultsTrig_$}/>
       <Content/>
       <Footer/>

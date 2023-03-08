@@ -36,6 +36,11 @@
     --color_30:#333333;
     --color_31:#dddddd;
     --color_32:#FFD700;
+    --color_33:#A04C59;
+    --color_34:#798D97;
+    --color_35:#23708A;
+    --color_36:#175673;
+    --color_37:#2C2C2C;
     --water_00:#0018e2;
     --water_01:#16c5ff;
     --water_x:#62d8ff;
@@ -317,7 +322,7 @@
     font-size: 18px ; font-weight: 700 ; 
 }
 .ability-1__description{
-    font-size: 12px ; font-weight: 400 ; max-width: 80%;
+    font-size: 12px ; font-weight: 400 ; max-width: 80%; display: flex ; justify-content: center ; align-items: center;
 }
 .ability-1_in-number{
     display: flex ; flex-direction: row ; justify-content: center ; align-items: center ;
@@ -429,6 +434,6 @@
 }
 @media screen and (max-width:376px) {
     .Card_{
-        height: 680px;
+        min-height: 680px; width: 100%;
     }    
 }

@@ -133,9 +133,8 @@ export const Card = ({data_,name_,abilities_,index_}) => {
         
         if(effect_ready_$ && effect_$[0]!=undefined&&effect_$[0].effect_entries[0] !=undefined&&effect_$[0].effect_entries[0].language!=undefined ){
             if( effect_$[0].effect_entries[0].language != undefined && effect_$[0].effect_entries[0].language.name != undefined && (effect_$[0].effect_entries[0].language.name == 'en')) {setEffectPrint_$(prev=>[...prev,effect_$[0].effect_entries[0].effect]) ; setEffectId_$(effect_$[0].id) ;}
-            else if(effect_$[0].effect_entries[0].language != undefined && effect_$[0].effect_entries[0].language.name == undefined){setEffectPrint_$(prev=>[...prev,'there is no effect found for this pokemon'])}
             else { setEffectPrint_$(prev=>[...prev,effect_$[0].effect_entries[1].effect]) ; setEffectId_$(effect_$[0].id) ;}
-        }
+        }else if (effect_ready_$ && (effect_$[0]==undefined || effect_$[0].effect_entries[0]==undefined || effect_$[0].effect_entries[0].language == undefined)){setEffectPrint_$(prev=>[...prev,'Has no overworld effect.']); setEffectId_$(Math.round(Math.random()*9))}
     },[effect_ready_$])
     useEffect(()=>{
         if(data_.sprites.other.dream_world.front_default!=undefined){
@@ -202,7 +201,7 @@ export const Card = ({data_,name_,abilities_,index_}) => {
             </div>
             <div className='ability-1_in-number'>
 
-            {effect_id_$|| 'effect 1 id '}
+            {effect_id_$|| 'X'}
 
                     {/* <TbNumber1 className='icons_one'/>
                     <TbNumber0 className='icons_zero'/>

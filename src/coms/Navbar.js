@@ -18,9 +18,9 @@ export const Navbar = () => {
   return (
     <div className='N_'>
         <ul className='N_ul'>
-            <a href='/home' className='N_li'>Home</a>
-            <a href='/about' className='N_li'>About</a>
-            <a href='/contact'className='N_li'>Contact</a>
+            <Link to='/home' className='N_li'>Home</Link>
+            <Link to='/about' className='N_li'>About</Link>
+            <Link to='/contact'className='N_li'>Contact</Link>
         </ul>
         <span className='N_i-con'><img className='N_i' src={require('../icons/N_icon.png')}/></span>
 
