@@ -22,10 +22,15 @@
   --color_21:#1C252CAA;
   --color_22:#1C252C99;
   --color_23:#010108;
-  
+  --color_33:#93dbff;
+  --color_34:#798D97;
+  --color_35:#23708A;
+  --color_36:#175673;
+  --color_37:#2C2C2C;
   --displayFlexNone:flex;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 *{
   box-sizing: border-box;
   margin: 0 ; padding: 0 ;
@@ -34,10 +39,7 @@
 
 /*  */
 html{
-  /* min-width: 100vw;
-  min-height: 100vh;
-  overflow: hidden !important; */
-  /* display: flex; align-items: center ; justify-content: center  ; */
+scroll-behavior:smooth ;
 }
 /* .Index{
   display: flex ; justify-content: center ; align-items: center ; min-height: 100vh;
@@ -175,7 +177,7 @@ html{
 
 }
 .C_h1{
-  font-size: 42px ; text-decoration: underline ; margin: 0px 0px 20px 0px ;
+  font-size: 42px ; text-decoration: underline ; margin: 0px 0px 20px 20px ;
 }
 .C_C{
   display: flex ; flex-wrap: wrap; justify-content: space-evenly ; 
@@ -237,6 +239,14 @@ html{
   width: 50% ; 
   display: flex ; align-items: center ; justify-content: center ;
   margin: 0;
+}
+.About_p{
+font-family: 'Pacifico', cursive;
+color:#010108;
+}
+.About_h{
+font-family: 'Lobster', cursive;
+color: #012E4A;
 }
 .uppercase{
   text-transform: uppercase;

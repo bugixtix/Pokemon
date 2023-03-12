@@ -11,6 +11,7 @@ root.render(
     <BrowserRouter>
     <div className='Index'>
     <Routes>
+       <Route path='/' exact element={<App />}/> 
        <Route path='/home' exact element={<App />}/> 
        <Route path='/about' exact element={<About_ />}/> 
        <Route path='/contact' exact element={<Contact_ />}/> 
